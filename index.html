@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="main.js" defer></script>
+    <link rel="stylesheet" href="style.css">
+    <title>Planilla de control cervecero</title>
+</head>
+<body>
+    
+
+
+    <main>
+        <h1 class="titulo"> Planilla de control cervecera</h1>
+        <form action="" id="form-principal">
+        <label for="fechacoccion" >Fecha: </label>
+        <input type="date" name="fechacoccion" id="fechacoccion">
+        <label for="estilo">Estilo: </label>
+        <input type="text" name="estilo" id="estilo">
+        <br>
+        <div class="maltas">
+            <label for="maltaBase">Malta base: </label>
+            <input type="text" name="maltaBase" id="maltaBase" placeholder="Pilsen">
+            <br>
+        </div>
+        <button id="agregarcampo">Agregar campo</button>
+    </form>
+    </main>
+
+    <section class="fondo">
+        <h2>Macerado: </h2>
+        <form class="macerado" action="">
+            <label for="tempMacerado">Temperatura de macerado: </label>
+                <input type="number" name="tempMacerado" value="67" min="0" id="">
+            <label for="tiempoMaerado">Tiempo: </label>
+                 <input type="number" name="tiempoMacerado" min="0" id="">
+            <br>
+            <h3>Escalones de temperatura:</h3>
+                <label for="escalones1">Minuto: </label>
+                <input type="number" name="escalon1" min="0">
+                <label for="temperaturaEscalon1">Temperatura:</label>
+                <input type="number" name="temperaturaEscalon1" value="66" id="">
+            <br>
+            <button name="agregarEscalon" id="agregarEscalon">Agregar escalon</button>
+            <br>
+
+            <label for="tiempoRecirculado">Tiempo de recirculado: </label>
+            <input type="number" name="tiempoRecirculado" value="30" id="">
+            <p>Observaciones y notas sobre el macerado de granos: </p>
+            <input type="text" name="notasRecirculado">
+            <button type="submit">Confirmar</button>
+        </form>
+        </section>
+
+        <section class="fondo">
+            <form class="lavado" action="">
+            <h2>Lavado de Granos: </h2>
+            <br>
+            <label for="tiempoLavado">Tiempo: </label>
+            <input type="number" name="tiempoLavado" id="">
+            <br>
+            <label for="temperaturaLavado">Temperatura: </label>
+            <input type="number" name="temperaturaLavado" value="66" id="">
+            <br>
+            <p>Observaciones y notas sobre el lavado de granos: </p>
+            <input type="text" name="notaLavado">
+            <button type="submit">Confirmar</button>
+            </form>
+
+        </section>
+</body>
+</html>
