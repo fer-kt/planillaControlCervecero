@@ -72,8 +72,10 @@ const ingresar = () => {
 }
 
 ingresar()
-console.table(maltas)
-console.table(lupulos)
+maltas.forEach(e => console.log( ` Malta: ${e.nombre} \nCantidad: ${e.cantidad} `) )
+lupulos.forEach(e => console.log( ` Lúpulo: ${e.nombre} \nCantidad: ${e.cantidad} \nMinuto de adición: ${e.adicion}`) )
+// console.table(maltas)
+// console.table(lupulos)
  
 
 const dorada = new Cerveza('Dorada Pampeana',1060, 1011)
