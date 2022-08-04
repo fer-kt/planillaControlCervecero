@@ -27,6 +27,8 @@ class Cerveza{
         return `Estilo: ${this.estilo} \n  Densidad inicial: ${this.densidadInicial} \n  Densidad final: ${this.densidadfinal} \n volumen alcoholico: ${this.abv} `
     }  
 
+        
+
 }
 
 class Malta{
@@ -50,6 +52,12 @@ class Lupulo {
 }
 
 
+function buscarEstilo(estilo){  
+    return cervezas.filter( e =>  e.estilo === estilo)
+}
+
+
+const cervezas = []
 const maltas = []
 const lupulos = []
 
@@ -82,7 +90,17 @@ const ingresar = () => {
 
 }
 
-let micerveza = ingresar()
+//let cerveza1 = ingresar()
+let cerveza2 = new Cerveza('apa', [{nombre: 'malta1', cantidad: 200}, {nombre: 'malta2', cantidad : 300}, {nombre: 'malta3', cantidad: 300}  ])
+let cerveza3 = new Cerveza('ipa', [{nombre: 'maltaIpa', cantidad: 200}, {nombre: 'maltaIpa2', cantidad : 300}, {nombre: 'malta3', cantidad: 300}  ])
+let cerveza4 = new Cerveza('ipa', [{nombre: 'otra malta', cantidad: 200}, {nombre: 'm2', cantidad : 300}, {nombre: 'm3', cantidad: 300}  ])
+let cerveza5 = new Cerveza('ipa', [{nombre: 'Pale Ale', cantidad: 15}, {nombre: 'caramelo 30', cantidad : 300}, {nombre: 'malta3', cantidad: 300}  ])
+let cerveza6 = new Cerveza('scottish', [{nombre: 'maltaScottish', cantidad: 200}, {nombre: 'maltaScottish2', cantidad : 300}, {nombre: 'malta3', cantidad: 300}  ])
+
+
+
+cervezas.push(cerveza2, cerveza3, cerveza4,cerveza5,cerveza6)
+let buscarEjemplo = buscarEstilo('apa')
 
 
  
