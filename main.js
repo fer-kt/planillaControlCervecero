@@ -1,8 +1,10 @@
 
 class Cerveza{
 
-    constructor(estilo, densidadInicial, densidadfinal){
-        this.estilo = estilo        
+    constructor(estilo,maltas, lupulos, densidadInicial, densidadfinal){
+        this.estilo = estilo 
+        this.maltas = maltas
+        this.lupulos = lupulos       
         this.densidadInicial = parseFloat(densidadInicial)
         this.densidadfinal = parseFloat(densidadfinal)        
     }
@@ -14,6 +16,13 @@ class Cerveza{
        console.log(`Volumen alcoholico de la ${this.estilo} : ${this.abv}%`)               
     }
     
+    mostrarMaltas() {
+        this.maltas.forEach(e => console.log( ` Malta: ${e.nombre} \nCantidad: ${e.cantidad} `) )
+    }
+
+    mostrarLupulos() {
+        this.lupulos.forEach(e => console.log( ` Lúpulo: ${e.nombre} \nCantidad: ${e.cantidad} \nMinuto de adición: ${e.adicion}`) )
+    }
     mostrar() { 
         return `Estilo: ${this.estilo} \n  Densidad inicial: ${this.densidadInicial} \n  Densidad final: ${this.densidadfinal} \n volumen alcoholico: ${this.abv} `
     }  
@@ -69,15 +78,14 @@ const ingresar = () => {
         lupulos.push(new Lupulo(lupulo, cantidad, adicion))
     } while (lupulo != '')
 
+    return new Cerveza('ipa',maltas, lupulos,1060, 1011)
+
 }
 
-ingresar()
-maltas.forEach(e => console.log( ` Malta: ${e.nombre} \nCantidad: ${e.cantidad} `) )
-lupulos.forEach(e => console.log( ` Lúpulo: ${e.nombre} \nCantidad: ${e.cantidad} \nMinuto de adición: ${e.adicion}`) )
-// console.table(maltas)
-// console.table(lupulos)
+let micerveza = ingresar()
+
+
  
 
-const dorada = new Cerveza('Dorada Pampeana',1060, 1011)
-dorada.calcularAlcohol()
-console.log(dorada.mostrar())
+
+
