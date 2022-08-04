@@ -124,6 +124,7 @@ lupulos: ${ultimoLote.lupulos.map((m)=> m.nombre)  }</p>
 <a href="#" class="btn btn-primary">Ver información completa</a>
 </div> `
 
+
 document.body.append(cardUltimoLote)
 
 
