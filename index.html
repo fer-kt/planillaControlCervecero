@@ -5,16 +5,26 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <script src="main.js" defer></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
     <link rel="stylesheet" href="style.css">
     <title>Planilla de control cervecero</title>
 </head>
 <body>
+    <header>
+        <nav class="header__nav">
+            <ul>
+                <li> <a href="index.html"> Inicio </a> </li>
+                <li> <a href="buscar.html"> Mis lotes </a> </li>
+
+            </ul>
+        </nav>
+    </header>
     
     <main>
-        <h1 class="main__title"> Planilla de control cervecera</h1>
+        <h1 class="main__title" id="main__title"> Planilla de control cervecera</h1>
         <form action="" id="form-principal">
-        <label for="fechacoccion" >Fecha: </label>
-        <input type="date" name="fechacoccion" id="fechacoccion">
+        <p id="fechaP">Fecha: </p>
+        
         <label for="estilo">Estilo: </label>
         <input type="text" name="estilo" id="estilo">
         <br>
@@ -23,50 +33,53 @@
             <input type="text" name="maltaBase" id="maltaBase" placeholder="Pilsen">
             <br>
         </div>
-        <button id="agregarcampo">Agregar campo</button>
+        <button class="btn btn-secondary" id="agregarcampo">Agregar campo</button>
     </form>
-    </main>
+    </main id="main__container" >
 
-    <section class="fondo">
-        <h2>Macerado: </h2>
-        <form class="macerado" action="">
-            <label for="tempMacerado">Temperatura de macerado: </label>
-                <input type="number" class="form__input" name="tempMacerado" value="67" min="0" id="">
-            <label for="tiempoMaerado">Tiempo: </label>
-                 <input type="number" class="form__input" name="tiempoMacerado" min="0" id="">
-            <br>
-            <h3>Escalones de temperatura:</h3>
-                <label for="escalones1">Minuto: </label>
-                <input type="number" name="escalon1" min="0">
-                <label for="temperaturaEscalon1">Temperatura:</label>
-                <input type="number" name="temperaturaEscalon1" value="66" id="">
-            <br>
-            <button name="agregarEscalon" id="agregarEscalon">Agregar escalon</button>
-            <br>
-
-            <label for="tiempoRecirculado">Tiempo de recirculado: </label>
-            <input type="number" name="tiempoRecirculado" value="30" id="">
-            <p>Observaciones y notas sobre el macerado de granos: </p>
-            <input type="text" name="notasRecirculado">
-            <button type="submit">Confirmar</button>
-        </form>
-        </section>
-
-        <section class="fondo">
-            <form class="lavado" action="">
-            <h2>Lavado de Granos: </h2>
-            <br>
-            <label for="tiempoLavado">Tiempo: </label>
-            <input type="number" name="tiempoLavado" id="">
-            <br>
-            <label for="temperaturaLavado">Temperatura: </label>
-            <input type="number" name="temperaturaLavado" value="66" id="">
-            <br>
-            <p>Observaciones y notas sobre el lavado de granos: </p>
-            <input type="text" name="notaLavado">
-            <button type="submit">Confirmar</button>
+    
+        <div class="form-group fondo">
+            <h2>Macerado: </h2>
+            <form class="macerado" action="">
+                <label for="tempMacerado">Temperatura de macerado: </label>
+                    <input type="number" class="form__input" name="tempMacerado" value="67" min="0" id="">
+                <label for="tiempoMaerado">Tiempo: </label>
+                     <input type="number" class="form__input" name="tiempoMacerado" min="0" id="">
+                <br>
+                <h3>Escalones de temperatura:</h3>
+                    <label for="escalones1">Minuto: </label>
+                    <input type="number" name="escalon1" min="0">
+                    <label for="temperaturaEscalon1">Temperatura:</label>
+                    <input type="number" name="temperaturaEscalon1" value="66" id="">
+                <br>
+                <button  name="agregarEscalon" class="btn btn-secondary" id="agregarEscalon">Agregar escalon</button>
+                <br>
+                <label for="tiempoRecirculado">Tiempo de recirculado: </label>
+                <input type="number" name="tiempoRecirculado" value="30" id="">
+                <p>Observaciones y notas sobre el macerado de granos: </p>
+                <input type="text" name="notasRecirculado">
+                <button type="submit" class="btn btn-secondary">Confirmar</button>
             </form>
+        </div>
+        
 
-        </section>
+        
+            <div class="form-group fondo">
+                <form class="lavado" action="">
+                <h2>Lavado de Granos: </h2>
+                <br>
+                <label for="tiempoLavado">Tiempo: </label>
+                <input type="number" name="tiempoLavado" id="">
+                <br>
+                <label for="temperaturaLavado">Temperatura: </label>
+                <input type="number" name="temperaturaLavado" value="66" id="">
+                <br>
+                <p>Observaciones y notas sobre el lavado de granos: </p>
+                <input type="text" name="notaLavado">
+                <button type="submit" class="btn btn-secondary">Confirmar</button>
+                </form>
+            </div>
+
+        
 </body>
 </html>

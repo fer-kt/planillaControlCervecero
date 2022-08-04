@@ -2,15 +2,61 @@
     font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
     padding: 0;
     margin: 0 ;
+    text-decoration: none;
+}
+.header__nav ul{
+display: flex ;
+flex-direction: row;
+justify-content: flex-end;
+
 }
 
+.main__form{
+  margin: 4rem;
+display: flex ;
+flex-direction: column;
+align-items: center
+}
 
+.main__form input {
+  width: 10rem;
+}
+.btn{
+  margin: 1rem;
+}
+
+li {  
+  list-style-type: none;
+  padding: 0 1rem;  
+}
+a:link {
+  color: green;
+  background-color: transparent;
+  text-decoration: none;
+}
+
+a:visited {
+  color: rgb(139, 94, 117);
+ 
+}
+
+a:hover {
+  color: rgb(145, 170, 85);
+  background-color: transparent;
+  text-decoration: underline;
+}
+
+a:active {
+  color: yellow;
+  background-color: transparent;
+  text-decoration: underline;
+}
 body {
     background-color: #0B0909;
     background-size: contain;
     text-align: center;
     color: #D6D6D6;
-    font-size: 25px;    
+    font-size: 20px;    
   }
 
   button {   

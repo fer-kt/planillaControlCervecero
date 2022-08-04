@@ -17,7 +17,7 @@ class Cerveza{
     }
     
     mostrarMaltas() {
-        this.maltas.forEach(e => console.log( ` Malta: ${e.nombre} \nCantidad: ${e.cantidad} `) )
+        this.maltas.forEach(e => console.log(e) )
     }
 
     mostrarLupulos() {
@@ -91,19 +91,41 @@ const ingresar = () => {
 }
 
 //let cerveza1 = ingresar()
-let cerveza2 = new Cerveza('apa', [{nombre: 'malta1', cantidad: 200}, {nombre: 'malta2', cantidad : 300}, {nombre: 'malta3', cantidad: 300}  ])
-let cerveza3 = new Cerveza('ipa', [{nombre: 'maltaIpa', cantidad: 200}, {nombre: 'maltaIpa2', cantidad : 300}, {nombre: 'malta3', cantidad: 300}  ])
-let cerveza4 = new Cerveza('ipa', [{nombre: 'otra malta', cantidad: 200}, {nombre: 'm2', cantidad : 300}, {nombre: 'm3', cantidad: 300}  ])
-let cerveza5 = new Cerveza('ipa', [{nombre: 'Pale Ale', cantidad: 15}, {nombre: 'caramelo 30', cantidad : 300}, {nombre: 'malta3', cantidad: 300}  ])
-let cerveza6 = new Cerveza('scottish', [{nombre: 'maltaScottish', cantidad: 200}, {nombre: 'maltaScottish2', cantidad : 300}, {nombre: 'malta3', cantidad: 300}  ])
+let cerveza2 = new Cerveza('apa', [{nombre: 'malta1', cantidad: 200}, {nombre: 'malta2', cantidad : 300}, {nombre: 'malta3', cantidad: 300}  ],[ {nombre: 'cascade' , cantidad: 100 , adicion: 90 }],1052,1010)
+let cerveza3 = new Cerveza('ipa', [{nombre: 'maltaIpa', cantidad: 200}, {nombre: 'maltaIpa2', cantidad : 300}, {nombre: 'malta3', cantidad: 300}], [ {nombre: 'amarillo' , cantidad: 100 , adicion: 90 }],1052,1010)
+let cerveza4 = new Cerveza('ipa', [{nombre: 'otra malta', cantidad: 200}, {nombre: 'm2', cantidad : 300}, {nombre: 'm3', cantidad: 300}], [ {nombre: 'citra' , cantidad: 100 , adicion: 90 }],1052,1010)
+let cerveza5 = new Cerveza('ipa', [{nombre: 'Pale Ale', cantidad: 15}, {nombre: 'caramelo 30', cantidad : 300}, {nombre: 'malta3', cantidad: 300}], [ {nombre: 'mosaic' , cantidad: 100 , adicion: 90 }],1052,1010)
+let cerveza6 = new Cerveza('scottish', [{nombre: 'maltaScottish', cantidad: 200}, {nombre: 'maltaScottish2', cantidad : 300}, {nombre: 'malta3', cantidad: 300}], [ {nombre: 'Chinook' , cantidad: 100 , adicion: 90 }],1052,1010)
 
 
 
 cervezas.push(cerveza2, cerveza3, cerveza4,cerveza5,cerveza6)
-let buscarEjemplo = buscarEstilo('apa')
+
+let buscarEjemplo = buscarEstilo('ipa')
+
+
+const fecha = new Date()
+const fechaP = document.getElementById('fechaP')
+fechaP.innerText = ` Fecha: ${fecha.toLocaleDateString()} `
+
+
+
+let cardUltimoLote = document.createElement('div')
+let ultimoLote= cervezas.at(-1)
+cardUltimoLote.className = 'container card fondo '
+cardUltimoLote.innerHTML = `  <div class="card-header">
+Último lote: ${cervezas.at(-1).estilo} Fecha:  
+</div>
+<div class="card-body ">
+<h5 class="card-title"> Ingredientes </h5>
+<p class="card-text">Maltas: ${ultimoLote.maltas.map((m)=> m.nombre)  }
+
+lupulos: ${ultimoLote.lupulos.map((m)=> m.nombre)  }</p>
+<a href="#" class="btn btn-primary">Ver información completa</a>
+</div> `
+
+document.body.append(cardUltimoLote)
 
 
  
-
-
 
