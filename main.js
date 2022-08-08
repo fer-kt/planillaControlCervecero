@@ -112,7 +112,7 @@ fechaP.innerText = ` Fecha: ${fecha.toLocaleDateString()} `
 
 let cardUltimoLote = document.createElement('div')
 let ultimoLote= cervezas.at(-1)
-cardUltimoLote.className = 'container card fondo '
+cardUltimoLote.className = 'container card fondo col-sm-10 '
 cardUltimoLote.innerHTML = `  <div class="card-header">
 Último lote: ${cervezas.at(-1).estilo} Fecha:  
 </div>
@@ -125,6 +125,7 @@ lupulos: ${ultimoLote.lupulos.map((m)=> m.nombre)  }</p>
 </div> `
 
 
+console.dir(cervezas[0])
 document.body.append(cardUltimoLote)
 
 
