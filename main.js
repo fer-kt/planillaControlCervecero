@@ -1,9 +1,10 @@
 
 class Cerveza{
 
-    constructor(estilo,maltas, lupulos, densidadInicial, densidadfinal){
+    constructor(estilo,maltas, lupulos, densidadInicial= 0, densidadfinal= 0){
         this.estilo = estilo 
         this.maltas = maltas
+        // this.macerado=  macerado
         this.lupulos = lupulos       
         this.densidadInicial = parseFloat(densidadInicial)
         this.densidadfinal = parseFloat(densidadfinal)        
@@ -61,34 +62,48 @@ const cervezas = []
 const maltas = []
 const lupulos = []
 
-/*           función que pide al usuario las maltas y los lúpulos utilizados           */
-const ingresar = () => {
-    let malta = ' '
-    let lupulo = ' '
+const txtEstilo = document.getElementById('estilo')
+const malta = document.getElementById('maltaBase')
+const cantidadMalta = document.getElementById('cantidadMalta')
+const btnMalta = document.getElementById('agregarcampo')
+const divMaltas = document.getElementById('maltasAgregadas')
+const maltaCard = document.createElement('p')
 
-    do{
-        malta = prompt('Malta (Aceptar para salir): ') 
-        if(malta === ''){
-            break
-        }   
-        let cantidad = parseFloat(prompt('Cantidad en KG'))
-        maltas.push(new Malta(malta, cantidad)) 
-    } while (malta != '')
+const txtBuscar = document.getElementById('txtBuscar')
+const btnBuscar = document.getElementById('btnBuscar')
+const textoBuscar = document.getElementById('liBuscar')
+textoBuscar.onclick = ()=>{
 
-
-    do{
-        lupulo = prompt('lupulo (Aceptar para salir): ') 
-        if(lupulo === ''){
-            break
-        }   
-        let cantidad = parseFloat(prompt('Cantidad en GR'))
-        let adicion = parseInt(prompt('Ingrese minuto de adición: '))
-        lupulos.push(new Lupulo(lupulo, cantidad, adicion))
-    } while (lupulo != '')
-
-    return new Cerveza('ipa',maltas, lupulos,1060, 1011)
+    if (document.getElementById('formBuscar').style.display == 'none'){
+        document.getElementById('formBuscar').style.display = 'block'
+    } else {
+        document.getElementById('formBuscar').style.display = 'none'
+    }
+}
+btnBuscar.onclick = (e)=>{
+    e.preventDefault()
+    
+    console.log(buscarEstilo(txtBuscar.value))
 
 }
+
+btnMalta.onclick= (e)=>{ 
+    e.preventDefault()
+    let maltainput = new Malta(malta.value, cantidadMalta.value)
+    maltas.push(maltainput)
+    malta.value= ''
+    malta.placeholder= ''
+    cantidadMalta.value= 0
+    document.getElementById('divOcultar').style.display = 'none'
+    document.getElementById('main__title').innerText = ` ${txtEstilo.value} - ${fecha.toLocaleDateString()}`
+
+}
+
+
+let cerveza = new Cerveza(txtEstilo.value,maltas)
+
+
+
 
 //let cerveza1 = ingresar()
 let cerveza2 = new Cerveza('apa', [{nombre: 'malta1', cantidad: 200}, {nombre: 'malta2', cantidad : 300}, {nombre: 'malta3', cantidad: 300}  ],[ {nombre: 'cascade' , cantidad: 100 , adicion: 90 }],1052,1010)
@@ -97,11 +112,11 @@ let cerveza4 = new Cerveza('ipa', [{nombre: 'otra malta', cantidad: 200}, {nombr
 let cerveza5 = new Cerveza('ipa', [{nombre: 'Pale Ale', cantidad: 15}, {nombre: 'caramelo 30', cantidad : 300}, {nombre: 'malta3', cantidad: 300}], [ {nombre: 'mosaic' , cantidad: 100 , adicion: 90 }],1052,1010)
 let cerveza6 = new Cerveza('scottish', [{nombre: 'maltaScottish', cantidad: 200}, {nombre: 'maltaScottish2', cantidad : 300}, {nombre: 'malta3', cantidad: 300}], [ {nombre: 'Chinook' , cantidad: 100 , adicion: 90 }],1052,1010)
 
+cervezas.push(cerveza2,cerveza3,cerveza4,cerveza5,cerveza6)
 
 
-cervezas.push(cerveza2, cerveza3, cerveza4,cerveza5,cerveza6)
 
-let buscarEjemplo = buscarEstilo('ipa')
+
 
 
 const fecha = new Date()
@@ -125,7 +140,7 @@ lupulos: ${ultimoLote.lupulos.map((m)=> m.nombre)  }</p>
 </div> `
 
 
-console.dir(cervezas[0])
+
 document.body.append(cardUltimoLote)
 
 

@@ -15,27 +15,41 @@
             <ul>
                 <li> <a href="index.html"> Inicio </a> </li>
                 <li> <a href="buscar.html"> Mis lotes </a> </li>
+                <li id="liBuscar"> <a href="#">Buscar</a>  </li>
 
             </ul>
         </nav>
+        <form action="" id="formBuscar" class = 'header__form'>
+            <label for="">Buscar: <input type="text" id="txtBuscar" > </label>
+            <button type="submit" id="btnBuscar" class="btn btn-secondary">Buscar</button>
+            
+        </form>
+        
     </header>
     
     <main>
         <h1 class="main__title" id="main__title"> Planilla de control cervecera</h1>
         <form action="" id="form-principal">
-        <p id="fechaP">Fecha: </p>
+            <div id="divOcultar" >
+                <p id="fechaP">Fecha: </p>        
+                <label for="estilo">Estilo: </label>
+                <input type="text" name="estilo" id="estilo">
+            </div>
         
-        <label for="estilo">Estilo: </label>
-        <input type="text" name="estilo" id="estilo">
-        <br>
+        
         <div class="maltas">
-            <label for="maltaBase">Malta base: </label>
+            <label for="maltaBase">Malta: </label>
             <input type="text" name="maltaBase" id="maltaBase" placeholder="Pilsen">
-            <br>
+            <label for="cantidadMalta"> Cantidad:
+            <input type="number" name="cantidadMalta" id="cantidadMalta">
+            </label>
+            
         </div>
         <button class="btn btn-secondary" id="agregarcampo">Agregar campo</button>
-    </form>
-    </main id="main__container" >
+        </form>
+        <div class="maltasAgregadas"></div>
+
+    </main >
 
     
         <div class="form-group fondo">
