@@ -1,13 +1,16 @@
 
 class Cerveza{
 
-    constructor(estilo,maltas, lupulos, densidadInicial= 0, densidadfinal= 0){
+    constructor(estilo,maltas, lupulos, densidadInicial, densidadfinal, tempMacerado, tiempoMacerado, escalones){
         this.estilo = estilo 
         this.maltas = maltas
         // this.macerado=  macerado
         this.lupulos = lupulos       
         this.densidadInicial = parseFloat(densidadInicial)
-        this.densidadfinal = parseFloat(densidadfinal)        
+        this.densidadfinal = parseFloat(densidadfinal)    
+        this.tempMacerado = tempMacerado
+        this.tiempoMacerado = tiempoMacerado  
+        this.escalones = escalones  
     }
     
     calcularAlcohol(){
@@ -58,7 +61,15 @@ function buscarEstilo(estilo){
 }
 
 
-const cervezas = []
+let beer = new Cerveza() // instancia vacia de Cerveza, se va armando a medida que avanza el proceso
+
+if(localStorage.getItem('cervezas')){
+    cervezas = JSON.parse(localStorage.getItem('cervezas'))
+}else{
+    cervezas= []
+}
+
+
 const maltas = []
 const lupulos = []
 
@@ -91,14 +102,41 @@ btnMalta.onclick= (e)=>{
     e.preventDefault()
     let maltainput = new Malta(malta.value, cantidadMalta.value)
     maltas.push(maltainput)
-    malta.value= ''
     malta.placeholder= ''
-    cantidadMalta.value= 0
     document.getElementById('divOcultar').style.display = 'none'
-    document.getElementById('main__title').innerText = ` ${txtEstilo.value} - ${fecha.toLocaleDateString()}`
-
+    document.getElementById('fechaP').innerText = ` ${txtEstilo.value} - ${fecha.toLocaleDateString()}`
+    document.getElementById('maltasAgregadas').innerHTML += ` <p> ${malta.value} - ${cantidadMalta.value} </p> `
+    malta.value= ''
+    cantidadMalta.value= 0
+    beer.estilo = txtEstilo.value
+    beer.maltas = maltas
+    
 }
 
+const addTemp = document.getElementById('addTemp')
+addTemp.onclick = ()=> {
+    tempMacerado = document.getElementById('tempInput')
+    tiempoMacerado = document.getElementById('tiempoInput')
+    beer.tiempoMacerado = tiempoMacerado.value
+    beer.tempMacerado = tempMacerado.value 
+    tiempoMacerado.disabled = true 
+    tempMacerado.disabled = true
+    
+}
+document.getElementById('agregarEscalon').addEventListener('click', (e)=>{
+    e.preventDefault()
+    console.log(document.getElementById('tiempoEscalon').value);
+})
+
+document.getElementById('finalizarMacerado').addEventListener('click', (e)=>{
+    e.preventDefault()
+    document.getElementById('divMacerado').className = 'ocultar'
+})
+
+document.getElementById('finalizarLavado').addEventListener('click', (e)=>{
+    e.preventDefault()
+    document.getElementById('divLavado').className = 'ocultar'
+})
 
 let cerveza = new Cerveza(txtEstilo.value,maltas)
 
@@ -106,14 +144,13 @@ let cerveza = new Cerveza(txtEstilo.value,maltas)
 
 
 //let cerveza1 = ingresar()
-let cerveza2 = new Cerveza('apa', [{nombre: 'malta1', cantidad: 200}, {nombre: 'malta2', cantidad : 300}, {nombre: 'malta3', cantidad: 300}  ],[ {nombre: 'cascade' , cantidad: 100 , adicion: 90 }],1052,1010)
-let cerveza3 = new Cerveza('ipa', [{nombre: 'maltaIpa', cantidad: 200}, {nombre: 'maltaIpa2', cantidad : 300}, {nombre: 'malta3', cantidad: 300}], [ {nombre: 'amarillo' , cantidad: 100 , adicion: 90 }],1052,1010)
-let cerveza4 = new Cerveza('ipa', [{nombre: 'otra malta', cantidad: 200}, {nombre: 'm2', cantidad : 300}, {nombre: 'm3', cantidad: 300}], [ {nombre: 'citra' , cantidad: 100 , adicion: 90 }],1052,1010)
-let cerveza5 = new Cerveza('ipa', [{nombre: 'Pale Ale', cantidad: 15}, {nombre: 'caramelo 30', cantidad : 300}, {nombre: 'malta3', cantidad: 300}], [ {nombre: 'mosaic' , cantidad: 100 , adicion: 90 }],1052,1010)
-let cerveza6 = new Cerveza('scottish', [{nombre: 'maltaScottish', cantidad: 200}, {nombre: 'maltaScottish2', cantidad : 300}, {nombre: 'malta3', cantidad: 300}], [ {nombre: 'Chinook' , cantidad: 100 , adicion: 90 }],1052,1010)
+// let cerveza2 = new Cerveza('apa', [{nombre: 'malta1', cantidad: 200}, {nombre: 'malta2', cantidad : 300}, {nombre: 'malta3', cantidad: 300}  ],[ {nombre: 'cascade' , cantidad: 100 , adicion: 90 }],1052,1010)
+// let cerveza3 = new Cerveza('ipa', [{nombre: 'maltaIpa', cantidad: 200}, {nombre: 'maltaIpa2', cantidad : 300}, {nombre: 'malta3', cantidad: 300}], [ {nombre: 'amarillo' , cantidad: 100 , adicion: 90 }],1052,1010)
+// let cerveza4 = new Cerveza('ipa', [{nombre: 'otra malta', cantidad: 200}, {nombre: 'm2', cantidad : 300}, {nombre: 'm3', cantidad: 300}], [ {nombre: 'citra' , cantidad: 100 , adicion: 90 }],1052,1010)
+// let cerveza5 = new Cerveza('ipa', [{nombre: 'Pale Ale', cantidad: 15}, {nombre: 'caramelo 30', cantidad : 300}, {nombre: 'malta3', cantidad: 300}], [ {nombre: 'mosaic' , cantidad: 100 , adicion: 90 }],1052,1010)
+// let cerveza6 = new Cerveza('scottish', [{nombre: 'maltaScottish', cantidad: 200}, {nombre: 'maltaScottish2', cantidad : 300}, {nombre: 'malta3', cantidad: 300}], [ {nombre: 'Chinook' , cantidad: 100 , adicion: 90 }],1052,1010)
 
-cervezas.push(cerveza2,cerveza3,cerveza4,cerveza5,cerveza6)
-
+//cervezas.push(cerveza2,cerveza3,cerveza4,cerveza5,cerveza6)
 
 
 
@@ -125,6 +162,14 @@ fechaP.innerText = ` Fecha: ${fecha.toLocaleDateString()} `
 
 
 
+let finalizar = document.getElementById('finalizarCoccion')
+finalizar.onclick= ()=> {
+    
+    cervezas.push(beer)
+    localStorage.setItem('cervezas', JSON.stringify(cervezas))
+    
+    
+}
 let cardUltimoLote = document.createElement('div')
 let ultimoLote= cervezas.at(-1)
 cardUltimoLote.className = 'container card fondo col-sm-10 '
@@ -134,14 +179,15 @@ cardUltimoLote.innerHTML = `  <div class="card-header">
 <div class="card-body ">
 <h5 class="card-title"> Ingredientes </h5>
 <p class="card-text">Maltas: ${ultimoLote.maltas.map((m)=> m.nombre)  }
-
-lupulos: ${ultimoLote.lupulos.map((m)=> m.nombre)  }</p>
+<br>
+lupulos:</p>
 <a href="#" class="btn btn-primary">Ver información completa</a>
 </div> `
 
-
-
 document.body.append(cardUltimoLote)
+
+
+
 
 
  

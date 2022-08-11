@@ -16,7 +16,9 @@ justify-content: flex-end;
   display: none;
 }
 
-
+.main__title::first-letter {
+  text-transform:capitalize;
+}
 .main__form{
   margin: 4rem;
 display: flex ;
@@ -88,18 +90,12 @@ body {
     box-sizing: border-box;
     
   }
-  input:focus {
-    color: green;
-    
-  }
+ 
   
   ::placeholder{
-    color: red;
+    color: rgb(211, 153, 153);
   }
-  input:hover{
-    color: aqua;
-    background-color: blueviolet;
-  }
+  
   button{
     cursor: crosshair;
   }
@@ -108,4 +104,8 @@ body {
   .lavado{
   display: flexbox;
   
+  }
+
+  .ocultar {
+    display: none;
   }
