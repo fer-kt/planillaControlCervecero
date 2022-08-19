@@ -112,6 +112,7 @@ btnMalta.onclick= (e)=>{
     cantidadMalta.value= 0
     beer.estilo = txtEstilo.value
     beer.maltas = maltas
+    beer.fecha = fecha.toLocaleDateString()
     
 }
 
@@ -198,7 +199,7 @@ let cardUltimoLote = document.createElement('div')
 let ultimoLote= cervezas.at(-1)
 cardUltimoLote.className = 'container card fondo col-sm-10 '
 cardUltimoLote.innerHTML = `  <div class="card-header">
-Último lote: ${cervezas.at(-1).estilo} Fecha:  
+Último lote: ${cervezas.at(-1).estilo} Fecha: ${fecha.toLocaleDateString()}   
 </div>
 <div class="card-body ">
 <h5 class="card-title"> Ingredientes </h5>
