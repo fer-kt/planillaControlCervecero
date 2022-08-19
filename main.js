@@ -62,11 +62,14 @@ function buscarEstilo(estilo){
 
 let beer = new Cerveza() // instancia vacia de Cerveza, se va armando a medida que avanza el proceso
 
-if(localStorage.getItem('cervezas')){
-    cervezas = JSON.parse(localStorage.getItem('cervezas'))
-}else{
-    cervezas= []
-}
+//  un poco de azuquitar sintactica. toma de local storage el array de cervezas si existe, o lo crea vacio si no existe
+let cervezas = JSON.parse(localStorage.getItem('cervezas')) || []
+
+// if(localStorage.getItem('cervezas')){
+//     cervezas = JSON.parse(localStorage.getItem('cervezas'))
+// }else{
+//     cervezas= []
+// }
 
 
 const maltas = []
