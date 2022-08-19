@@ -1,10 +1,9 @@
-
+AOS.init();
 class Cerveza{
 
     constructor(estilo,maltas, lupulos, densidadInicial, densidadfinal, tempMacerado, tiempoMacerado, escalones){
         this.estilo = estilo 
-        this.maltas = maltas
-        // this.macerado=  macerado
+        this.maltas = maltas      
         this.lupulos = lupulos       
         this.densidadInicial = parseFloat(densidadInicial)
         this.densidadfinal = parseFloat(densidadfinal)    
@@ -128,6 +127,35 @@ document.getElementById('agregarEscalon').addEventListener('click', (e)=>{
     console.log(document.getElementById('tiempoEscalon').value);
 })
 
+
+
+ // OCULTAR Y EXPANDIR DIVS
+ let btnExpand = document.getElementById('expand')
+ btnExpand.addEventListener('click', ()=> {
+    //
+    if (btnExpand.innerText == 'expand_less') {
+        document.getElementById('formMacerado').className = 'ocultar';
+        btnExpand.innerText = 'expand_more'
+    }else{
+        btnExpand.innerText = 'expand_less'
+        document.getElementById('formMacerado').classList.remove('ocultar')
+    }  
+    
+})
+
+
+let expandLavado = document.getElementById('expandLavado')
+expandLavado.addEventListener('click', ()=>{
+    if (expandLavado.innerText == 'expand_less'){
+        document.getElementById('formLavado').className = 'ocultar'
+        expandLavado.innerText ='expand_more'
+    } else {
+        expandLavado.innerText = 'expand_less'
+        document.getElementById('formLavado').classList.remove('ocultar')
+    }
+})
+
+
 document.getElementById('finalizarMacerado').addEventListener('click', (e)=>{
     e.preventDefault()
     document.getElementById('divMacerado').className = 'ocultar'
@@ -140,9 +168,6 @@ document.getElementById('finalizarLavado').addEventListener('click', (e)=>{
 
 let cerveza = new Cerveza(txtEstilo.value,maltas)
 
-
-
-
 //let cerveza1 = ingresar()
 // let cerveza2 = new Cerveza('apa', [{nombre: 'malta1', cantidad: 200}, {nombre: 'malta2', cantidad : 300}, {nombre: 'malta3', cantidad: 300}  ],[ {nombre: 'cascade' , cantidad: 100 , adicion: 90 }],1052,1010)
 // let cerveza3 = new Cerveza('ipa', [{nombre: 'maltaIpa', cantidad: 200}, {nombre: 'maltaIpa2', cantidad : 300}, {nombre: 'malta3', cantidad: 300}], [ {nombre: 'amarillo' , cantidad: 100 , adicion: 90 }],1052,1010)
@@ -151,10 +176,6 @@ let cerveza = new Cerveza(txtEstilo.value,maltas)
 // let cerveza6 = new Cerveza('scottish', [{nombre: 'maltaScottish', cantidad: 200}, {nombre: 'maltaScottish2', cantidad : 300}, {nombre: 'malta3', cantidad: 300}], [ {nombre: 'Chinook' , cantidad: 100 , adicion: 90 }],1052,1010)
 
 //cervezas.push(cerveza2,cerveza3,cerveza4,cerveza5,cerveza6)
-
-
-
-
 
 const fecha = new Date()
 const fechaP = document.getElementById('fechaP')
