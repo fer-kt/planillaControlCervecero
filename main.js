@@ -1,4 +1,5 @@
 AOS.init();
+
 class Cerveza{
 
     constructor(estilo,maltas, lupulos, densidadInicial, densidadfinal, tempMacerado, tiempoMacerado, escalones){
@@ -85,14 +86,14 @@ const maltaCard = document.createElement('p')
 const txtBuscar = document.getElementById('txtBuscar')
 const btnBuscar = document.getElementById('btnBuscar')
 const textoBuscar = document.getElementById('liBuscar')
-textoBuscar.onclick = ()=>{
 
-    if (document.getElementById('formBuscar').style.display == 'none'){
-        document.getElementById('formBuscar').style.display = 'block'
-    } else {
-        document.getElementById('formBuscar').style.display = 'none'
-    }
+
+textoBuscar.onclick = ()=>{
+    let form = document.getElementById('formBuscar')
+    form.style.display === 'none' ? form.style.display = 'block' : form.style.display = 'none'   
 }
+
+
 btnBuscar.onclick = (e)=>{
     e.preventDefault()
     
@@ -107,7 +108,9 @@ btnMalta.onclick= (e)=>{
     malta.placeholder= ''
     document.getElementById('divOcultar').style.display = 'none'
     document.getElementById('fechaP').innerText = ` ${txtEstilo.value} - ${fecha.toLocaleDateString()}`
-    document.getElementById('maltasAgregadas').innerHTML += ` <p> ${malta.value} - ${cantidadMalta.value} </p> `
+    document.getElementById('maltasAgregadas').style.display= 'block'
+    document.getElementById('tabla__maltas').innerHTML += `  <tr> <td class='animate__animated animate__fadeInLeft'> ${malta.value} </td> <td class= 'animate__animated animate__fadeInRight'>${cantidadMalta.value}</td>
+  </tr> `
     malta.value= ''
     cantidadMalta.value= 0
     beer.estilo = txtEstilo.value
