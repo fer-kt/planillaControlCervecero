@@ -16,9 +16,12 @@ justify-content: flex-end;
   display: none;
 }
 
+
+
 .main__title::first-letter {
   text-transform:capitalize;
 }
+
 #maltasAgregadas{
   display: none;
   margin: 0 auto;

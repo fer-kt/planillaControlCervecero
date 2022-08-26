@@ -88,10 +88,15 @@ const btnBuscar = document.getElementById('btnBuscar')
 const textoBuscar = document.getElementById('liBuscar')
 
 
+
+// le doy display none acá porque si lo pongo adentro no me toma el primer click
+document.getElementById('formBuscar').style.display = 'none'
 textoBuscar.onclick = ()=>{
     let form = document.getElementById('formBuscar')
-    form.style.display === 'none' ? form.style.display = 'block' : form.style.display = 'none'   
+    form.className += " animate__animated animate__backInLeft"    
+    form.style.display == 'none' ? form.style.display = 'block' : form.style.display = 'none'   
 }
+    
 
 
 btnBuscar.onclick = (e)=>{
@@ -109,7 +114,9 @@ btnMalta.onclick= (e)=>{
     document.getElementById('divOcultar').style.display = 'none'
     document.getElementById('fechaP').innerText = ` ${txtEstilo.value} - ${fecha.toLocaleDateString()}`
     document.getElementById('maltasAgregadas').style.display= 'block'
-    document.getElementById('tabla__maltas').innerHTML += `  <tr> <td class='animate__animated animate__fadeInLeft'> ${malta.value} </td> <td class= 'animate__animated animate__fadeInRight'>${cantidadMalta.value}</td>
+    let tabla = document.getElementById('tabla__maltas')
+    document.querySelector('.table').style.overflow = 'hidden'
+    tabla.innerHTML += `  <tr> <td class='animate__animated animate__fadeInLeft'> ${malta.value} </td> <td class= 'animate__animated animate__fadeInRight'>${cantidadMalta.value}</td>
   </tr> `
     malta.value= ''
     cantidadMalta.value= 0
@@ -137,6 +144,7 @@ document.getElementById('agregarEscalon').addEventListener('click', (e)=>{
 
 
  // OCULTAR Y EXPANDIR DIVS
+
  let btnExpand = document.getElementById('expand')
  btnExpand.addEventListener('click', ()=> {
     //
