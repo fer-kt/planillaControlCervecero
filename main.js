@@ -98,11 +98,38 @@ textoBuscar.onclick = ()=>{
 }
     
 
+document.getElementById('btnLotes').addEventListener('click', (e)=>{
+    e.preventDefault()
+    let index= 0;
+    document.getElementById('divPrincipal').style.display = 'none'
+    cervezas.map(e=>{    
+    let card = document.createElement('div')
+   card.innerHTML= `  <div class="card-header">
+Estilo: ${e.estilo} Fecha: ${e.fecha}   
+</div>
+<div class="card-body ">
+<h5 class="card-title"> Ingredientes </h5>
+<p class="card-text">Maltas: ${e.maltas.map(e => e.nombre)}
+<br>
+lupulos:</p>
+<a href="#" id= "btn${index}" class="btn btn-primary">Ver información completa</a>
+</div> `
+
+document.body.appendChild(card)
+index ++
+})
+    
+})
 
 btnBuscar.onclick = (e)=>{
     e.preventDefault()
-    
-    console.log(buscarEstilo(txtBuscar.value))
+    let resultado = buscarEstilo(txtBuscar.value)
+    document.getElementById('divPrincipal').style.display = 'none'
+    if (resultado.length > 0 ){
+        resultado.map(e => console.log(`${e.estilo} - ${e.fecha}`))     
+    } else{
+        console.log('no se encuentra');
+    }
 
 }
 
@@ -193,6 +220,7 @@ let cerveza = new Cerveza(txtEstilo.value,maltas)
 //cervezas.push(cerveza2,cerveza3,cerveza4,cerveza5,cerveza6)
 
 const fecha = new Date()
+beer.fecha = fecha
 const fechaP = document.getElementById('fechaP')
 fechaP.innerText = ` Fecha: ${fecha.toLocaleDateString()} `
 
@@ -220,7 +248,8 @@ lupulos:</p>
 <a href="#" class="btn btn-primary">Ver información completa</a>
 </div> `
 
-document.body.append(cardUltimoLote)
+document.getElementById('divPrincipal').appendChild(cardUltimoLote)
+
 
 
 
