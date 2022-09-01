@@ -210,14 +210,7 @@ document.getElementById('finalizarLavado').addEventListener('click', (e)=>{
 
 let cerveza = new Cerveza(txtEstilo.value,maltas)
 
-//let cerveza1 = ingresar()
-// let cerveza2 = new Cerveza('apa', [{nombre: 'malta1', cantidad: 200}, {nombre: 'malta2', cantidad : 300}, {nombre: 'malta3', cantidad: 300}  ],[ {nombre: 'cascade' , cantidad: 100 , adicion: 90 }],1052,1010)
-// let cerveza3 = new Cerveza('ipa', [{nombre: 'maltaIpa', cantidad: 200}, {nombre: 'maltaIpa2', cantidad : 300}, {nombre: 'malta3', cantidad: 300}], [ {nombre: 'amarillo' , cantidad: 100 , adicion: 90 }],1052,1010)
-// let cerveza4 = new Cerveza('ipa', [{nombre: 'otra malta', cantidad: 200}, {nombre: 'm2', cantidad : 300}, {nombre: 'm3', cantidad: 300}], [ {nombre: 'citra' , cantidad: 100 , adicion: 90 }],1052,1010)
-// let cerveza5 = new Cerveza('ipa', [{nombre: 'Pale Ale', cantidad: 15}, {nombre: 'caramelo 30', cantidad : 300}, {nombre: 'malta3', cantidad: 300}], [ {nombre: 'mosaic' , cantidad: 100 , adicion: 90 }],1052,1010)
-// let cerveza6 = new Cerveza('scottish', [{nombre: 'maltaScottish', cantidad: 200}, {nombre: 'maltaScottish2', cantidad : 300}, {nombre: 'malta3', cantidad: 300}], [ {nombre: 'Chinook' , cantidad: 100 , adicion: 90 }],1052,1010)
 
-//cervezas.push(cerveza2,cerveza3,cerveza4,cerveza5,cerveza6)
 
 const fecha = new Date()
 beer.fecha = fecha
@@ -253,7 +246,21 @@ document.getElementById('divPrincipal').appendChild(cardUltimoLote)
 
 
 
-
+document.getElementById('APIrecipes').addEventListener('click',()=>{
+    document.getElementById('divPrincipal').style.display = 'none'
+   let lista =  document.createElement('ul')
+    
+    fetch('https://api.punkapi.com/v2/beers')
+        .then(response => response.json())
+        .then(response => response.map(e =>{
+            lista.innerHTML += ` <li id= 'API${e.id}' > ${e.name} - ${e.tagline}</li> `
+            console.log(e)
+            
+        }))
+        .catch(err => console.error(err));
+        document.body.appendChild(lista)
+        
+       
+})
 
  
-
