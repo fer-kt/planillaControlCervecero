@@ -245,7 +245,7 @@ document.getElementById('divPrincipal').appendChild(cardUltimoLote)
 
 
 
-
+let apiBeers = []
 document.getElementById('APIrecipes').addEventListener('click',()=>{
     document.getElementById('divPrincipal').style.display = 'none'
    let lista =  document.createElement('ul')
@@ -254,13 +254,41 @@ document.getElementById('APIrecipes').addEventListener('click',()=>{
         .then(response => response.json())
         .then(response => response.map(e =>{
             lista.innerHTML += ` <li id= 'API${e.id}' > ${e.name} - ${e.tagline}</li> `
-            console.log(e)
+            apiBeers.push(e)
+            for (const beer of apiBeers) {               
+                document.getElementById(`API${beer.id}`).addEventListener('click', ()=> {
+                    lista.style.display = 'none'
+                    let apiCard = document.createElement('div')
+                    apiCard.innerHTML = `
+                    <h2> ${beer.name} </h2>
+                    <h3> ${beer.tagline} </h3>
+                    <p> ${beer.description}  </p>
+                    <img src="${beer.image_url}" alt="">
+
+                    <p>ABV: ${beer.abv}
+                    IBU: ${beer.ibu}
+                    SRM: ${beer.srm}
+                    Densidad Inicial: ${beer.target_og}
+                    Densidad Final: ${beer.target_fg}
+                    
+                    Maltas: ${beer.ingredients.malt.map(e => e.name)}
+
+                    </p>
+
+                    `
+                    document.body.appendChild(apiCard)
+                    console.log(beer.id)})
+                   
+            }
+            
+           
             
         }))
         .catch(err => console.error(err));
-        document.body.appendChild(lista)
+        document.body.appendChild(lista)  
         
-       
-})
+        
+    })
+    
 
  
