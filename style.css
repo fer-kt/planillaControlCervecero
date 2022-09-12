@@ -117,3 +117,9 @@ body {
   .ocultar {
     display: none;
   }
+
+
+  img {
+    height: 25vh;
+    
+  }

@@ -139,8 +139,7 @@
             <br />
             <label for="tiempoRecirculado">Tiempo de recirculado: </label>
             <input type="number" name="tiempoRecirculado" value="30" id="" />
-            <p>Observaciones y notas sobre el macerado de granos:</p>
-            <input type="text" name="notasRecirculado" />
+            
             <button type="submit" id="finalizarMacerado" class="btn btn-secondary">
               Confirmar
             </button>
@@ -161,8 +160,7 @@
             <label for="temperaturaLavado">Temperatura: </label>
             <input type="number" name="temperaturaLavado" value="66" id="" />
             <br />
-            <p>Observaciones y notas sobre el lavado de granos:</p>
-            <input type="text" name="notaLavado" />
+            
             <button type="submit" id="finalizarLavado" class="btn btn-secondary">
               Confirmar
             </button>
@@ -177,10 +175,10 @@
           </h2>
           <form class="formLupulos" action="" id="formLupulos">
             <br />
-            <label for="tiempoLavado">Lúpulo: </label>
-            <input type="text" name="tiempoLavado" id="" />
-            <label for="tiempoLavado">Tiempo: </label>
-            <input type="number" name="tiempoLavado" id="" />
+            <label for="lupulo">Lúpulo: </label>
+            <input type="text" name="lupulo" id="lupulo" />
+            <label for="lupuloCantidad">Cantidad: </label>
+            <input type="number" name="lupuloCantidad" id="lupuloCantidad" />
             <span
               id="addLupulo"
               class="material-symbols-outlined btn btn-outline-secondary btn-sm"
@@ -188,8 +186,20 @@
               done
             </span>
             <br />
-            <button type="submit" id="" class="btn btn-secondary">Confirmar</button>
+            <button type="submit" id="btnAddLupulo" class="btn btn-secondary">Confirmar</button>
           </form>
+          <div id="lupulosAgregados" class="col-sm-8 ocultar">
+            <!-- inyectar lupulos agregados -->
+            <table class="table table-striped table-dark">
+              <thead>
+                <tr>
+                  <th scope="col">lupulo</th>
+                  <th scope="col">Cantidad</th>
+                </tr>
+              </thead>
+              <tbody id="tabla__lupulos"></tbody>
+            </table>
+          </div>
         </div>
         <button name="finalizar" class="btn btn-secondary" id="finalizarCoccion">
           Finalizar
