@@ -90,9 +90,9 @@ btnAddLupulo.onclick = (e)=>{
 
 document.getElementById('btnLotes').addEventListener('click', (el)=>{
     el.preventDefault()
-    let index= 0;
+    
     document.getElementById('divPrincipal').style.display = 'none'
-    cervezas.map(e=>{    
+    cervezas.forEach(e=>{    
     let card = document.createElement('div')
    card.innerHTML= `  <div class="card-header">
 Estilo: ${e.estilo} Fecha: ${e.fecha}   
@@ -102,14 +102,24 @@ Estilo: ${e.estilo} Fecha: ${e.fecha}
 <p class="card-text">Maltas: ${e.maltas.map(e => e.nombre)}
 <br>
 lupulos:${e.lupulos.map(e => e.nombre)}</p>
-<a href="#" id= "btn${index}" class="btn btn-primary">Ver información completa</a>
+<a href="#" id= "btn${e.id}" class="btn btn-primary">Ver información completa</a>
 </div> `
 
 document.body.appendChild(card)
-index ++
+
+    document.getElementById(`btn${e.id}`).addEventListener('click', ()=>{        
+        swal(mostrar(cervezas[e.id]))
+    })    
+})
 })
     
-})
+function mostrar(cerveza){
+return ` estilo: ${cerveza.estilo} - fecha: ${cerveza.fecha}
+        maltas: ${cerveza.maltas.map(e => e.nombre)} - ${cerveza.maltas.map(e => e.cantidad)}
+        temperatura de macerado: ${cerveza.tempMacerado} - tiempo: ${cerveza.tiempoMacerado}
+        lupulos: ${cerveza.lupulos.map(e=>e.nombre)} cantidad: ${cerveza.lupulos.map(e=>e.cantidad)}
+  `
+}
 
 btnBuscar.onclick = (e)=>{
     e.preventDefault()
@@ -225,30 +235,13 @@ fechaP.innerText = ` Fecha: ${fecha.toLocaleDateString()} `
 
 let finalizar = document.getElementById('finalizarCoccion')
 finalizar.onclick= ()=> {
+    beer.id = cervezas.length
     
     cervezas.push(beer)
     localStorage.setItem('cervezas', JSON.stringify(cervezas))
-    
+    swal("Añadida correctamente. Puedes ver todas las cocciones en la sección 'Mis lotes' ");
     
 }
-
-
-
-let cardUltimoLote = document.createElement('div')
-let ultimoLote= cervezas.at(-1) || 'nada'
-cardUltimoLote.className = 'container card fondo col-sm-10 '
-cardUltimoLote.innerHTML = `  <div class="card-header">
-Último lote: ${cervezas.at(-1).estilo} Fecha: ${fecha.toLocaleDateString()}   
-</div>
-<div class="card-body ">
-<h5 class="card-title"> Ingredientes </h5>
-<p class="card-text">Maltas: ${ultimoLote.maltas.map((m)=> m.nombre)  }
-<br>
-lupulos: ${ultimoLote.lupulos.map((m)=> m.nombre)  }</p>
-<a href="#" class="btn btn-primary">Ver información completa</a>
-</div> `
-
-document.getElementById('divPrincipal').appendChild(cardUltimoLote)
 
 
 
